@@ -29,27 +29,27 @@ namespace AsciiBarChart
                 var strLegend = FormatNumber(legend) + "┫";
                 
                 if (i == 1)
-                    sb.Append(strLegend.PadLeft(4));
+                    sb.Append(strLegend.PadLeft(5));
                 else if (i % 4 == 0 && i != maxBarheight)
-                    sb.Append(strLegend.PadLeft(4));
+                    sb.Append(strLegend.PadLeft(5));
                 else if (i == maxBarheight)
-                    sb.Append(strLegend.PadLeft(4));
+                    sb.Append(strLegend.PadLeft(5));
                 else
-                    sb.Append("┫".PadLeft(4));
+                    sb.Append("┫".PadLeft(5));
 
                 for (long j = 0; j < Data.Keys.Count; j++)
                     sb.Append(values[j] >= i ? " ███ " : "     ");
                 sb.AppendLine();
             }
-            sb.Append("┗".PadLeft(4));
+            sb.Append("┗".PadLeft(5));
                 foreach(var label in lables)
                     sb.Append("━━╋━━");
             sb.AppendLine();
             for (int i = 0; i < maxLabelLength; i++)
             {
-                sb.Append("    ");
+                sb.Append("     ");
                 foreach (var label in lables)
-                    sb.Append(label.Length > i ? $"  {label[i]}  " : "     ");
+                    sb.Append(label.Length > i ? $"  {label[i]}  " : "    ");
                 sb.AppendLine();
             }
 
@@ -75,7 +75,7 @@ namespace AsciiBarChart
                 var legend = rawvalues[i];
                 string strLegend = FormatNumber(legend);
                 if (compact)
-                    sb.Append($"{$"{(labels[i] + ':').PadRight(maxLabelLength + 1)} {strLegend.PadLeft(4)}".PadRight(1)}");
+                    sb.Append($"{$"{(labels[i] + ':').PadRight(maxLabelLength + 1)} {strLegend,4}".PadRight(1)}");
                 else
                     sb.Append($"{i.ToString().PadRight(Data.Keys.Count.ToString().Length)}");
 
